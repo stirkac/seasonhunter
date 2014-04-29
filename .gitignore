@@ -16,3 +16,8 @@
 /tmp
 
 .env
+
+# Pow and rvm config
+/.powrc
+/.ruby-gemset*
+/.ruby-version*
