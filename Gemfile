@@ -8,6 +8,7 @@ end
 
 group :development, :test do
 	gem 'sqlite3'
+	gem 'dotenv-rails'
 end
 
 # Assets
@@ -20,3 +21,5 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'bootstrap-sass-rails'
+gem 'omniauth'
+gem "omniauth-google-oauth2"

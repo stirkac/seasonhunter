@@ -7,8 +7,52 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="wrapper">
+    <div class="box">
+        <div class="row">
 
-<%= yield %>
+            <!-- sidebar -->
+            <div class="column col-sm-3" id="sidebar">
+                <a class="logo" href="#">SeasonHunter</a>
+                <ul class="nav">
+                    <li class="active"><a href="#featured">Shows</a>
+                    </li>
+                    <li><a href="#stories">Favorites</a>
+                    </li>
+                    <li><a href="#stories">My Account</a>
+                    </li>
+                </ul>
+                <ul class="nav hidden-xs" id="sidebar-footer">
+                    <li>Made with <i class="glyphicon glyphicon-heart-empty"></i> and Ruby on Rails
+                    </li>
+                </ul>
+            </div>
+            <!-- /sidebar -->
 
+            <!-- main -->
+            <div class="column col-sm-9" id="main">
+                <div class="padding">
+                    <div class="full col-sm-9">
+
+                        <!-- content -->
+
+                        <div class="col-sm-12" id="featured">
+                          <div class="page-header text-muted">
+                          Important headline
+                          </div>
+                        </div>
+
+
+                        <%= yield %>
+
+
+                    </div><!-- /col-9 -->
+                </div><!-- /padding -->
+            </div>
+            <!-- /main -->
+
+        </div>
+    </div>
+</div>
 </body>
 </html>

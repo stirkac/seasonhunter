@@ -1,7 +1,11 @@
-%h3 Dober dan
+- if current_user
+  %p
+  Welcome
+  #{current_user.name}!
+  = link_to "Sign Out", signout_path
+- else
+  %p
+  = link_to 'Sign in', '/auth/google_oauth2'
 
-%p
-	This
-	is
-	a
-	paragraph
+%h3 Most popular series
+
