@@ -2,7 +2,7 @@
 
 Simple implementation of TV Shows reminder application with data fetched from themoviedb.com.
 
-Things you may need:
+Things you need:
 
 * Ruby version 2.1.0p0
 * Rails version 4.0.3
