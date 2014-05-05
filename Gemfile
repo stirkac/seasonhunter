@@ -19,3 +19,4 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass-rails'
 gem 'omniauth'
 gem "omniauth-google-oauth2"
+gem 'themoviedb'

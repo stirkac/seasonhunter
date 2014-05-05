@@ -15,11 +15,16 @@
             <div class="column col-sm-3" id="sidebar">
                 <a class="logo" href="#">SeasonHunter</a>
                 <ul class="nav">
-                    <li class="active"><a href="#featured">Shows</a>
+                    <li class="active">
+                        <%= link_to "Home", root_path %>
                     </li>
-                    <li><a href="#stories">Favorites</a>
-                    </li>
-                    <li><a href="#stories">My Account</a>
+                    <li>
+                        <% if current_user %>
+                          Welcome <%= current_user.name %>!
+                          <%= link_to "Sign Out", signout_path %>
+                        <% else %>
+                          <%= link_to "Sign in", "/auth/google_oauth2" %>
+                        <% end %>
                     </li>
                 </ul>
                 <ul class="nav hidden-xs" id="sidebar-footer">
@@ -41,11 +46,7 @@
                           Important headline
                           </div>
                         </div>
-
-
                         <%= yield %>
-
-
                     </div><!-- /col-9 -->
                 </div><!-- /padding -->
             </div>
