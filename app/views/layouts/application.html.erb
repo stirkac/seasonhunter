@@ -20,8 +20,7 @@
                     </li>
                     <li>
                         <% if current_user %>
-                          Welcome <%= current_user.name %>!
-                          <%= link_to "Sign Out", signout_path %>
+                          <%= link_to "Sign Out from "+current_user.name , signout_path %>
                         <% else %>
                           <%= link_to "Sign in", "/auth/google_oauth2" %>
                         <% end %>

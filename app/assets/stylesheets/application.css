@@ -31,6 +31,9 @@ a {
   height: 20%;
   width: 90%;
 }
+.carousel-caption {
+  text-shadow: 2px 2px 2px black;
+}
 
 .wrapper, .row {
    height: 100%;

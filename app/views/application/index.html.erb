@@ -1,7 +1,7 @@
 
-  <div class="page-header text-muted">
-  	Popular shows
-  </div>
+<div class="page-header text-muted">
+	Popular shows
+</div>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -14,7 +14,7 @@
    <% @popular.first(10).each do |series| %>
   	<% if series %>
     <div class="item <%=series==@popular.first ? "active" : "" %>">
-			<%= image_tag("#{@configuration.base_url}w154#{series['backdrop_path']}", size: "800x400") if series['backdrop_path'] %>
+			<%= image_tag("#{@configuration.base_url}w1000#{series['backdrop_path']}") if series['backdrop_path'] %>
       <div class="carousel-caption">
         <h3><%=series['name']%></h3>
         <p>Average user rating: <%=series['vote_average']%></p>
@@ -33,15 +33,15 @@
 </div>
 
 
-  <div class="page-header text-muted">
-  	Top rated shows
-  </div>
+<div class="page-header text-muted">
+	Top rated shows
+</div>
 
 <% @top_rated.first(5).each do |series| %>
 	<% if series %>
 		<div class="media">
 		<%= link_to "Nekaj",{ :class=>"pull-left" } do %>
-			<%= image_tag("#{@configuration.base_url}w154#{series['backdrop_path']}", :class => "media-object") if series['backdrop_path'] %>
+			<%= image_tag("#{@configuration.base_url}w300#{series['backdrop_path']}", :class => "media-object") if series['backdrop_path'] %>
     <% end %>
     <div class="media-body">
         <h4 class="media-heading"><%=series['name']%> <small><i>On air since <%=series['first_air_date']%> </i></small></h4>
