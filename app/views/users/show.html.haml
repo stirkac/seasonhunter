@@ -1,0 +1,9 @@
+%h1 Users page!
+
+
+%p This is #{user.name}'s page.
+
+%p #{user.name} has #{user.favorites.count} favorites!
+
+- user.favorites.each do |favorite|
+	%p Favorite show id: #{favorite.show_id}
