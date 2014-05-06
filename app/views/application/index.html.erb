@@ -46,6 +46,11 @@
     <div class="media-body">
         <h4 class="media-heading"><%=series['name']%> <small><i>On air since <%=series['first_air_date']%> </i></small></h4>
         <p>Average user rating <%=series['vote_average']%></p>
+        <% if current_user.has_favored? series['id'] %>
+          <p><%= link_to "Remove from favorites", series_unfavorite_path(series['id']) %></p>
+        <% else %>
+          <p><%= link_to "Add to favorite", series_favorite_path(series['id']) %></p>
+        <% end %>
     </div>
 </div>
 	<% end %>
