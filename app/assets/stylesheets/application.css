@@ -31,8 +31,13 @@ a {
   height: 20%;
   width: 90%;
 }
+
 .carousel-caption {
   text-shadow: 2px 2px 2px black;
+}
+.carousel-caption a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .wrapper, .row {
@@ -127,8 +132,6 @@ a {
     margin-bottom:30px;
   }
 }
-
-
 
 
 /* bootstrap overrides */

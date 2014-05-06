@@ -4,16 +4,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  before_filter :set_config
 
-  def set_config
-
-    @configuration = Tmdb::Configuration.new
-  end
+  expose(:tmdb_base_url) { Tmdb::Configuration.new.base_url }
+  expose(:popular) { Tmdb::TV.popular }
+  expose(:top_rated) { Tmdb::TV.top_rated }
 
   def index
-    @popular = Tmdb::TV.popular
-    @top_rated = Tmdb::TV.top_rated
   end
 
   private

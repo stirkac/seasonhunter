@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'decent_exposure'
+gem 'rack-mini-profiler'
 
 gem 'bootstrap-sass-rails'
 gem 'omniauth'
