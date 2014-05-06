@@ -5,6 +5,6 @@ Seasonhunter::Application.routes.draw do
   get "/signout" => "sessions#destroy", :as => :signout
 
   resources :series, only: [:show]
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 
 end

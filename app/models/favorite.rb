@@ -8,8 +8,8 @@ class Favorite < ActiveRecord::Base
 
 	belongs_to :user
 
-	def get_show
-		# Get show from TVDB
+	def show
+		Tmdb::TV.detail show_id
 	end
 
 end

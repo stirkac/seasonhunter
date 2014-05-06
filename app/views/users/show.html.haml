@@ -6,4 +6,4 @@
 %p #{user.name} has #{user.favorites.count} favorites!
 
 - user.favorites.each do |favorite|
-	%p Favorite show id: #{favorite.show_id}
+	%p Show: #{favorite.show.name}
