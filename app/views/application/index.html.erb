@@ -1,12 +1,42 @@
-<h3>Most popular shows</h3>
-<% @popular.first(10).each do |series| %>
-	<% if series %>
-			<%= image_tag("#{@configuration.base_url}w154#{series['backdrop_path']}") if series['backdrop_path'] %>
 
+  <div class="page-header text-muted">
+  	Popular shows
+  </div>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+  	<% (0..10).each do |i| %>
+    	<li data-target="#carousel-example-generic" data-slide-to="<%=i%>" class="active"></li>
+    <% end %>
+  </ol>
+
+  <div class="carousel-inner">
+   <% @popular.first(10).each do |series| %>
+  	<% if series %>
+    <div class="item <%=series==@popular.first ? "active" : "" %>">
+			<%= image_tag("#{@configuration.base_url}w154#{series['backdrop_path']}", size: "800x400") if series['backdrop_path'] %>
+      <div class="carousel-caption">
+        <h3><%=series['name']%></h3>
+        <p>Average user rating: <%=series['vote_average']%></p>
+	      </div>
+	    </div>
+		<% end %>
 	<% end %>
-<% end %>
-<hr>
-<h3>Top rated shows</h3>
+  </div>
+
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
+  <div class="page-header text-muted">
+  	Top rated shows
+  </div>
+
 <% @top_rated.first(5).each do |series| %>
 	<% if series %>
 		<div class="media">

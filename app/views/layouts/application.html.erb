@@ -15,7 +15,7 @@
             <div class="column col-sm-3" id="sidebar">
                 <a class="logo" href="#">SeasonHunter</a>
                 <ul class="nav">
-                    <li class="active">
+                    <li>
                         <%= link_to "Home", root_path %>
                     </li>
                     <li>
@@ -38,14 +38,6 @@
             <div class="column col-sm-9" id="main">
                 <div class="padding">
                     <div class="full col-sm-9">
-
-                        <!-- content -->
-
-                        <div class="col-sm-12" id="featured">
-                          <div class="page-header text-muted">
-                          Important headline
-                          </div>
-                        </div>
                         <%= yield %>
                     </div><!-- /col-9 -->
                 </div><!-- /padding -->

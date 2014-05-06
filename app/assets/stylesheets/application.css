@@ -27,6 +27,11 @@ a {
   color:#222222;
 }
 
+.carousel{
+  height: 20%;
+  width: 90%;
+}
+
 .wrapper, .row {
    height: 100%;
    margin-left:0;
