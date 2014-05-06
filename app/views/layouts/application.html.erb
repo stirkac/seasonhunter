@@ -13,18 +13,24 @@
 
             <!-- sidebar -->
             <div class="column col-sm-3" id="sidebar">
-                <a class="logo" href="#">SeasonHunter</a>
+                <%= link_to "Seasonhunter", root_path, class: "logo" %>
                 <ul class="nav">
                     <li>
-                        <%= link_to "Home", root_path %>
+                      <%= link_to "Home", root_path %>
+                      <%= link_to "Users", users_path %>
                     </li>
-                    <li>
-                        <% if current_user %>
-                          <%= link_to "Sign Out from "+current_user.name , signout_path %>
-                        <% else %>
-                          <%= link_to "Sign in", "/auth/google_oauth2" %>
-                        <% end %>
-                    </li>
+                    <% if current_user %>
+                      <li>
+                        <%= link_to "Profile", user_path(current_user) %>
+                      </li>
+                      <li>
+                        <%= link_to "Sign Out, #{current_user.name}", signout_path %>
+                      </li>
+                    <% else %>
+                      <li>
+                      <%= link_to "Sign in", "/auth/google_oauth2" %>
+                      </li>
+                    <% end %>
                 </ul>
                 <ul class="nav hidden-xs" id="sidebar-footer">
                     <li>Made with <i class="glyphicon glyphicon-heart-empty"></i> and Ruby on Rails

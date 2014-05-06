@@ -6,4 +6,5 @@
 %p #{user.name} has #{user.favorites.count} favorites!
 
 - user.favorites.each do |favorite|
-	%p Show: #{favorite.show.name}
+	%p
+		= link_to "Show: #{favorite.show.name}", series_path(favorite.show_id)
