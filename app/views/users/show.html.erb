@@ -1,0 +1,15 @@
+<div class="page-header text-muted">
+	<%=user.name%> has <%=user.favorites.count%> favorites!
+</div>
+
+<% user.favorites.each do |favorite| %>
+<div class="media">
+	<%=link_to series_path(favorite.show_id),{ :class=>"pull-left" } do%>
+		<%= image_tag("#{tmdb_base_url}w300#{favorite.show.backdrop_path}", :class => "media-object") if favorite.show.backdrop_path %>
+  <% end %>
+  <div class="media-body">
+      <h4 class="media-heading"><%=favorite.show.name %> <small><i> Last air date: <%=favorite.show.last_air_date %></i></small></h4>
+      <p><%=link_to favorite.show.overview, series_path(favorite.show.id) %></p>
+  </div>
+</div>
+<% end %>

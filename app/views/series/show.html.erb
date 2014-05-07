@@ -1,11 +1,22 @@
-DOber dan
 
-<%= series.to_yaml %>
+<h1><%= series.name %></h1>
+<% if current_user.present? %>
+  <% if current_user.has_favored? series.id %>
+    <p><%= link_to "Remove from favorites", series_unfavorite_path(series.id), { :class=>"btn btn-primary btn-xl" } %></p>
+  <% else %>
+    <p><%= link_to "Add to favorites", series_favorite_path(series.id), { :class=>"btn btn-primary btn-xl" }  %></p>
+  <% end %>
+<% end %>
+
 
 <% seasons.each do |season| %>
 	<h1>SEASON</h1>
 	<p>
-		<%= season.to_yaml %>
+	<ul>
+		<%season['episodes'].each do |episode| %>
+			<li><%=episode['name']%> <small> - on air since <%=episode['air_date'] %></small></li>
+		<% end %>
+	</ul>
 	</p>
 <% end %>
 
