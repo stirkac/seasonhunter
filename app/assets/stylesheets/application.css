@@ -10,7 +10,6 @@
  *
  *= require bootstrap
  *= require_self
- *= require_tree .
  */
 
 /* move special fonts to HTML head for better performance */

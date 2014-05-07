@@ -22,3 +22,4 @@ gem 'bootstrap-sass-rails'
 gem 'omniauth'
 gem "omniauth-google-oauth2"
 gem 'themoviedb'
+gem 'activeadmin', github: 'gregbell/active_admin'
