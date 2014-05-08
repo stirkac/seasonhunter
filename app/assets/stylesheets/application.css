@@ -26,6 +26,12 @@ a {
   color:#222222;
 }
 
+#search{
+  padding-left: -20px;
+  margin-top: 20px;
+  height: 100%;
+}
+
 .carousel{
   height: 20%;
   width: 90%;
@@ -154,8 +160,12 @@ h1,h2,h3 {
   text-transform:uppercase;
   letter-spacing:2px;
 }
+.page-header:first-of-type{
+  padding-top: 70px;
+}
 
 .col-sm-9.full {
+  margin-top: 10px;
     width: 100%;
 }
 

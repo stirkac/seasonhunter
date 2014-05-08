@@ -1,0 +1,22 @@
+<%= form_tag("/search", method: "get" , class: "search") do %>
+  <div class="col-sm-11">
+  	<%= text_field_tag(:q, params[:q], :placeholder => 'Find your favorite show here...', class: "form-control input-lg") %>
+  </div>
+  <div class="col-sm-1">
+  	<%= submit_tag("Search", class: "btn btn-success btn-lg") %>
+  </div>
+<%end%>
+
+
+<% if search%>
+
+	<div class="page-header text-muted">
+		Search results for "<%=params[:q]%>"
+	</div>
+
+	<%search.each do |result| %>
+		<p><%=result.to_json%></p>
+		<hr>
+	<%end%>
+<%end%>
+

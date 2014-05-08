@@ -12,4 +12,6 @@ Seasonhunter::Application.routes.draw do
   end
 
   resources :users, only: [:index, :show]
+  get "/search" => "search#index"
+
 end

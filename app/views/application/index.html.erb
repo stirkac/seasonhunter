@@ -1,3 +1,11 @@
+<%= form_tag("/search", method: "get" , class: "search") do %>
+  <div class="col-sm-11">
+    <%= text_field_tag(:q, nil, :placeholder => 'Find your favorite show here...', class: "form-control input-lg") %>
+  </div>
+  <div class="col-sm-1">
+    <%= submit_tag("Search", class: "btn btn-success btn-lg") %>
+  </div>
+<%end%>
 
 <div class="page-header text-muted">
 	Popular shows
@@ -6,7 +14,7 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
   	<% (0..10).each do |i| %>
-    	<li data-target="#carousel-example-generic" data-slide-to="<%=i%>" class="active"></li>
+      <li  data-target="#carousel-example-generic" class="<%=i==1 ? "active" : "" %>"></li>
     <% end %>
   </ol>
 
