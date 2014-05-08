@@ -26,10 +26,9 @@ a {
   color:#222222;
 }
 
-#search{
-  padding-left: -20px;
-  margin-top: 20px;
-  height: 100%;
+.search {
+  height: 50px;
+  margin-left: -20px;
 }
 
 .carousel{
@@ -160,12 +159,8 @@ h1,h2,h3 {
   text-transform:uppercase;
   letter-spacing:2px;
 }
-.page-header:first-of-type{
-  padding-top: 70px;
-}
 
 .col-sm-9.full {
-  margin-top: 10px;
     width: 100%;
 }
 

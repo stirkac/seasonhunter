@@ -1,12 +1,20 @@
-<%=image_tag("#{tmdb_base_url}w300#{series.poster_path}") %>
-<h1><%= series.name %></h1>
-<% if current_user.present? %>
-  <% if current_user.has_favored? series.id %>
-    <p><%= link_to "Remove from favorites", series_unfavorite_path(series.id), { :class=>"btn btn-primary btn-xl" } %></p>
-  <% else %>
-    <p><%= link_to "Add to favorites", series_favorite_path(series.id), { :class=>"btn btn-primary btn-xl" }  %></p>
-  <% end %>
-<% end %>
+<div class="media">
+	<%=image_tag("#{tmdb_base_url}w300#{series.poster_path}") %>
+  <div class="media-body">
+      <h2 class="media-heading"><%= series.name %></h2>
+      <p><%=series.overview%></p>
+      <% if current_user.present? %>
+        <% if current_user.has_favored? series.id %>
+          <p><%= link_to "Remove from favorites", series_unfavorite_path(series.id), { :class=>"btn btn-primary btn-xl" } %></p>
+        <% else %>
+          <p><%= link_to "Add to favorites", series_favorite_path(series.id), { :class=>"btn btn-primary btn-xl" }  %></p>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
+
+
 
 <% seasons.each do |season| %>
 	<h3>Season <%=season['season_number']%></h3>
