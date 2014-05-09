@@ -1,27 +1,33 @@
-<div class="media">
-	<%=image_tag("#{tmdb_base_url}w300#{series.poster_path}") %>
-  <div class="media-body">
-      <h2 class="media-heading"><%= series.name %></h2>
-      <p><%=series.overview%></p>
-      <% if current_user.present? %>
-        <% if current_user.has_favored? series.id %>
-          <p><%= link_to "Remove from favorites", series_unfavorite_path(series.id), { :class=>"btn btn-primary btn-xl" } %></p>
-        <% else %>
-          <p><%= link_to "Add to favorites", series_favorite_path(series.id), { :class=>"btn btn-primary btn-xl" }  %></p>
-        <% end %>
-      <% end %>
+<div class="media flex">
+	<%=link_to series_path(series.id),{ :class=>"pull-left" } do%>
+		<%= image_tag("#{tmdb_base_url}w300#{series.poster_path}", :class => "media-object") if series.poster_path %>
+  <% end %>
+  <div class="media-body middle">
+      <h2 class="media-heading"><%=series.name %></h2>
+      <div class="rating"><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i></div>
+      <hr>
+      <p><%=series.overview %></p>
   </div>
 </div>
 
-
-
+<div class="favorite">
+<% if current_user.present? %>
+  <% if current_user.has_favored? series.id %>
+    <p><%= link_to "Remove from Favorites", series_unfavorite_path(series.id), { :class=>"btn btn-primary btn-lg" } %></p>
+  <% else %>
+    <p><%= link_to "Add to Favorites", series_favorite_path(series.id), { :class=>"btn btn-primary btn-lg" }  %></p>
+  <% end %>
+<% else %>
+	<p><%= link_to "Sign in to add Favorites", "/auth/google_oauth2", { :class=>"btn btn-primary btn-lg" }  %></p>
+<%end %>
+</div>
 
 <% seasons.each do |season| %>
-	<h3>Season <%=season['season_number']%></h3>
+	<h3>Season <%=season['season_number']%> <small>on air <%=time_ago_in_words(season['air_date'])%></small></h3>
 	<p>
 	<ul>
 		<%season['episodes'].each do |episode| %>
-			<li><%=episode['name']%> <small> - on air since <%=episode['air_date'] %></small></li>
+			<li><small><%="#{season['season_number']}x"%><%="%.2i" %episode['episode_number'].to_i%></small> - <%=episode['name']%></li>
 		<% end %>
 	</ul>
 	</p>

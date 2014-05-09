@@ -49,12 +49,12 @@
 
 <% top_rated.first(5).each do |series| %>
 	<% if series %>
-		<div class="media">
+		<div class="media flex">
 		<%= link_to series_path(series['id']),{ :class=>"pull-left" } do %>
 			<%= image_tag("#{tmdb_base_url}w300#{series['backdrop_path']}", :class => "media-object") if series['backdrop_path'] %>
     <% end %>
     <div class="media-body">
-        <h4 class="media-heading"><%=series['name']%> <small><i>On air since <%=series['first_air_date']%> </i></small></h4>
+        <h4 class="media-heading"><%=series['name']%> <small> premiered <%=time_ago_in_words(series['first_air_date'])%> ago </small></h4>
         <p>Average user rating <%=series['vote_average']%></p>
         <% if current_user.present? %>
           <% if current_user.has_favored? series['id'] %>
