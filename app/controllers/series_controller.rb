@@ -11,7 +11,7 @@ class SeriesController < ApplicationController
 	end
 
 	expose(:comments) do
-		Comment.for_show series_id
+		Comment.for_show(series_id).show_only
 	end
 
 	def show

@@ -49,38 +49,6 @@
 </div>
 
 <div class="col-md-6">
-
-  <h3> Comments: </h3>
-  <% comments.each do |comment| %>
-  <div class="media">
-    <a class="pull-left">
-      <%= image_tag(comment.user.image_url, class: "img-circle")%>
-    </a>
-    <div class="media-body">
-      <div class="well well-sm col-md-12">
-      <div class="media-heading ">
-        <strong><%= comment.user.name %></strong>
-        <small class="pull-right"><i>posted <%= time_ago_in_words comment.created_at %> ago<i></small>
-      </div>
-      <%= simple_format(comment.message) %>
-      </div>
-    </div>
-  </div>
-  <% end %>
-
-  <% if current_user%>
-    <%= form_for(Comment.new, url: series_create_comment_path(series.id) ) do |f|%>
-
-      <div class="form-group">
-        <h3>Add a comment</h3>
-      </div>
-      <div class="form-group">
-        <%= f.text_area :message, class: "form-control" %>
-      </div>
-      <div class="form-group">
-      <%= f.submit class: "btn btn-danger pull-right" %>
-      </div>
-    <% end %>
-  <%end%>
+  <%= render "shared/comments", comments: comments, create_url: series_create_comment_path(series.id) %>
 </div>
 </div>
