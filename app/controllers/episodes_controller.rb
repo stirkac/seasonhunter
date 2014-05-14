@@ -1,11 +1,7 @@
 class EpisodesController < ApplicationController
 
 	expose(:series) do
-		if params[:id].present?
-			Tmdb::TV.detail params[:id]
-		elsif params[:series_id].present?
-			Tmdb::TV.detail params[:series_id]
-		end
+		Tmdb::TV.detail params[:series_id]
 	end
 
 	expose(:episode) do

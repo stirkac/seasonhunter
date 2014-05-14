@@ -1,3 +1,11 @@
+<div class="row">
+<ol class="breadcrumb">
+  <li><%= link_to "Home",  root_url  %></li>
+  <li class="active"><%= series.name %></li>
+</ol>
+</div>
+
+
 <div class="media flex">
 	<%=link_to series_path(series.id),{ :class=>"pull-left" } do%>
 		<%= image_tag("#{tmdb_base_url}w300#{series.poster_path}", :class => "media-object") if series.poster_path %>
@@ -30,8 +38,11 @@
 	<p>
 	<ul>
 		<%season['episodes'].each do |episode| %>
-			<li><small><%="#{season['season_number']}x"%><%="%.2i" %episode['episode_number'].to_i%></small> - <%=episode['name']%></li>
-		<% end %>
+			<li>
+        <%= link_to series_episode_path(series.id, season['season_number'], episode['episode_number']) do %>
+          <small><%="#{season['season_number']}x"%><%="%.2i" %episode['episode_number'].to_i%></small> - <%=episode['name']%></li>
+      <% end %>
+    <% end %>
 	</ul>
 	</p>
 <% end %>
@@ -39,18 +50,18 @@
 
 <div class="col-md-6">
 
-  <h1> Comments: </h1>
+  <h3> Comments: </h3>
   <% comments.each do |comment| %>
   <div class="media">
     <a class="pull-left">
-      <%= image_tag(comment.user.image_url, width: 30)%>
+      <%= image_tag(comment.user.image_url, class: "img-circle")%>
     </a>
     <div class="media-body">
-      <div class="media-heading">
-        <%= comment.user.name %>
+      <div class="well well-sm col-md-12">
+      <div class="media-heading ">
+        <strong><%= comment.user.name %></strong>
         <small class="pull-right"><i>posted <%= time_ago_in_words comment.created_at %> ago<i></small>
       </div>
-      <div class="well well-sm col-md-12">
       <%= simple_format(comment.message) %>
       </div>
     </div>

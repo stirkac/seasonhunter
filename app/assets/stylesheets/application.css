@@ -30,6 +30,7 @@ a {
 .search {
   height: 50px;
   margin-left: -20px;
+  margin-bottom: 20px;
 }
 
 .middle{
@@ -123,8 +124,9 @@ a {
 }
 #main .img-circle {
   margin-top:18px;
-  height:70px;
-  width:70px;
+  height:40px;
+  width:40px;
+  border: 1px solid #d3d3d3;
 }
 
 #sidebar, #sidebar a {

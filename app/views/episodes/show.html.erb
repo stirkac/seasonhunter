@@ -1,5 +1,18 @@
-<%=episode.to_json%>
-----
+<div class="row">
+<ol class="breadcrumb">
+  <li><%= link_to "Home",  root_url  %></li>
+  <li><%= link_to series.name, series_path(params[:series_id])  %></li>
+  <li class="active">Episode <%=params[:season] %>x<%="%.2i" %episode["episode_number"] %></li>
+</ol>
+</div>
+
+<div class="row">
+
+<div class="col-md-12 pull-left">
+	<%=episode.to_json%>
+</div>
+</div>
+
 
 <div class="row">
 <div class="col-md-6 pull-right">
