@@ -9,6 +9,10 @@ Seasonhunter::Application.routes.draw do
   resources :series, only: [:show] do
   	get :favorite
   	get :unfavorite
+    post :create_comment
+
+    get "/:season/:episode", controller: :episodes, action: :show, as: :episode
+    post "/:season/:episode/comment", controller: :episodes, action: :create_comment, as: :episode_comment
   end
 
   resources :users, only: [:index, :show]
