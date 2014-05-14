@@ -9,7 +9,7 @@
     <div class="well well-sm col-md-12">
     <div class="media-heading ">
       <strong><%= comment.user.name %></strong>
-      <small class="pull-right"><i>posted <%= time_ago_in_words comment.created_at %> ago<i></small>
+      <small class="pull-right"><i>posted <%= time_ago_in_words comment.created_at %> ago</i></small>
     </div>
     <%= simple_format(comment.message) %>
     </div>
@@ -24,9 +24,7 @@
 <% if current_user%>
   <%= form_for(Comment.new, url: create_url ) do |f|%>
 
-    <div class="form-group">
       <h3>Add a comment</h3>
-    </div>
     <div class="form-group">
       <%= f.text_area :message, class: "form-control" %>
     </div>
