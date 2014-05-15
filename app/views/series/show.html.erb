@@ -34,7 +34,7 @@
 <div class="row">
 <div class="col-md-6">
 <% seasons.each do |season| %>
-	<h3>Season <%=season['season_number']%> <small>on air <%=time_ago_in_words(season['air_date'])%></small></h3>
+	<h3>Season <%=season['season_number']%> <small>on air <%=time_ago_in_words(season['air_date']) rescue "unknown time"%></small></h3>
 	<p>
 	<ul>
 		<%season['episodes'].each do |episode| %>
