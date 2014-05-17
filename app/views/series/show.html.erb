@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="favorite">
+<div class="pull-right">
 <% if current_user.present? %>
   <% if current_user.has_favored? series.id %>
     <p><%= link_to "Remove from Favorites", series_unfavorite_path(series.id), { :class=>"btn btn-primary btn-lg" } %></p>
@@ -35,15 +35,25 @@
 <div class="col-md-6">
 <% seasons.each do |season| %>
 	<h3>Season <%=season['season_number']%> <small>on air <%=time_ago_in_words(season['air_date']) rescue "unknown time"%></small></h3>
-	<p>
-	<ul>
-		<%season['episodes'].each do |episode| %>
-			<li>
-        <%= link_to series_episode_path(series.id, season['season_number'], episode['episode_number']) do %>
-          <small><%="#{season['season_number']}x"%><%="%.2i" %episode['episode_number'].to_i%></small> - <%=episode['name']%></li>
+  <p>
+  <% if season['episodes'].present? %>
+  	<ul>
+  		<%season['episodes'].each do |episode| %>
+    		<li>
+          <% if episode['episode_number'].present? %>
+            <%= link_to series_episode_path(series.id, season['season_number'], episode['episode_number']) do %>
+              <small><%="#{season['season_number']}x"%><%="%.2i" %episode['episode_number'].to_i%></small> - <%=episode['name']%>
+            <% end %>
+          <% else %>
+            <small>(Season <%="#{season['season_number']}"%> intro episode) </small> - <%=episode['name']%>
+          <% end %>
+        </li>
       <% end %>
-    <% end %>
-	</ul>
+  	</ul>
+  <% else %>
+    <ul><li>No episodes.</li></ul>
+
+  <% end %>
 	</p>
 <% end %>
 </div>

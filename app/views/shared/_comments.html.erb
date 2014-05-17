@@ -18,7 +18,12 @@
 <% end %>
 
 <%if comments.empty? %>
-  <p>no comments yet<p>
+  No comments yet.
+  <%if current_user.present?%>
+     Add your own below!
+  <%else%>
+    <%= link_to "Sign in", "/auth/google_oauth2"%> to add your own!
+  <%end%>
 <%end%>
 
 <% if current_user%>
