@@ -14,6 +14,10 @@ class SeriesController < ApplicationController
 		Comment.for_show(series_id).show_only
 	end
 
+	expose(:ratings) do
+		Rating.for_show(series_id).show_only.average(:score)
+	end
+
 	def show
 		if series.id.nil?
 			render :error
@@ -39,6 +43,22 @@ class SeriesController < ApplicationController
 
 		redirect_to series_path(series_id)
 	end
+
+	def update_rating
+    rating = Rating.for_show(series_id).by_user(current_user)
+    if rating.empty?
+    	Rating.create!(
+    		score: params[:score],
+				show_id: series_id,
+				user: current_user
+    	)
+    else
+    	rating.update_all(score: params[:score].to_i)
+    end
+    respond_to do |format|
+        format.json { head :ok }
+    end
+  end
 
 	private
 

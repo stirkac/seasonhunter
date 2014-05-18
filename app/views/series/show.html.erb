@@ -12,7 +12,9 @@
   <% end %>
   <div class="media-body middle">
       <h2 class="media-heading"><%=series.name %></h2>
-      <div class="rating"><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i></div>
+      <div class="rating" id="rating" data-score="<%=ratings%>">
+      </div>
+
       <hr>
       <p><%=series.overview %></p>
   </div>
@@ -62,3 +64,24 @@
   <%= render "shared/comments", comments: comments, create_url: series_create_comment_path(series.id) %>
 </div>
 </div>
+
+<%= javascript_include_tag "jquery.raty.min" %>
+<script>
+  $('#rating').raty({
+    path: '/assets',
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    width: false,
+    click: function(score, evt) {
+      console.log("SCORE "+score);
+      $.ajax({
+        url: "<%=series_update_rating_path(series.id)%>",
+        type: 'POST',
+        data: {"score": score},
+        success:    function(response, status) {
+          console.log(status);
+        }
+      });}
+  });
+</script>

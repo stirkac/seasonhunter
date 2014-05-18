@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
 	has_many :favorites
 	has_many :comments
+	has_many :ratings
 
 	def has_favored? show_id
 		favorites.find_by(show_id: show_id).present?
