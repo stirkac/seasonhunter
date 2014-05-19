@@ -14,13 +14,9 @@ Seasonhunter::Application.routes.draw do
 
     get "/:season/:episode", controller: :episodes, action: :show, as: :episode
     post "/:season/:episode/comment", controller: :episodes, action: :create_comment, as: :episode_comment
-
-
   end
 
   resources :users, only: [:index, :show]
-  resources :ratings, only: :update
-
   get "/search" => "search#index"
 
 end
