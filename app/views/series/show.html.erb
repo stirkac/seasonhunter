@@ -72,7 +72,11 @@
     score: function() {
       return $(this).attr('data-score');
     },
+    halfShow : false,
     width: false,
+    <% if current_user.nil?%>
+    readOnly: true,
+    <% end %>
     click: function(score, evt) {
       console.log("SCORE "+score);
       $.ajax({

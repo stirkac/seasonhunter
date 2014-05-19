@@ -45,16 +45,9 @@ class SeriesController < ApplicationController
 	end
 
 	def update_rating
-    rating = Rating.for_show(series_id).by_user(current_user)
-    if rating.empty?
-    	Rating.create!(
-    		score: params[:score],
-				show_id: series_id,
-				user: current_user
-    	)
-    else
-    	rating.update_all(score: params[:score].to_i)
-    end
+		rating = Rating.find_or_initialize_by(show_id: series_id, user_id: current_user.id)
+		rating.score = params[:score]
+		rating.save!
     respond_to do |format|
         format.json { head :ok }
     end
