@@ -12,6 +12,10 @@ class EpisodesController < ApplicationController
 		Comment.for_show(params[:series_id]).season(params[:season]).episode(params[:episode])
 	end
 
+	expose(:ratings) do
+		Raing.for_show(params[:series_id]).season(params[:season]).episode(params[:episode])
+	end
+
 	def show
 		if episode['status_code'].present?
 			render :error
