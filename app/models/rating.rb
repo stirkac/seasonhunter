@@ -1,9 +1,9 @@
 class Rating < ActiveRecord::Base
-	#show_id: integer
-	#season: integer
-	#episode: integer
-	#user: integer
-	#score: integer
+	# show_id: integer
+	# season: integer
+	# episode: integer
+	# user: integer
+	# score: integer
 
 	# Rating.for_show(1234).show_only
 	scope :for_show, ->(show_id){ where(show_id: show_id) }
@@ -13,7 +13,7 @@ class Rating < ActiveRecord::Base
 	scope :season, ->(season){ where(season: season.to_i) }
 	scope :episode, ->(episode){ where(episode: episode.to_i) }
 
-	scope :by_user, ->(user){ where(user_id: user)}
+	scope :by_user, ->(user){ where(user_id: user) }
 
 	belongs_to :user
 
