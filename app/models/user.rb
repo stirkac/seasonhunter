@@ -22,6 +22,19 @@ class User < ActiveRecord::Base
 		gender == 'male' || gender.nil?
 	end
 
+	def google_api
+		client = Google::APIClient.new(
+      :application_name => 'Seasonhunter',
+      :application_version => '1.0.0'
+    )
+
+    client.authorization.client_id = ENV['CLIENT_ID']
+    client.authorization.client_secret = ENV['CLIENT_SECRET']
+
+    client.authorization.access_token = self.token
+    client
+	end
+
 	def self.create_with_omniauth(auth)
 	  create! do |user|
 	    user.provider = auth["provider"]
