@@ -21,7 +21,8 @@
 			<h2><%=episode['name']%></h2>
 			<p>This episode aired on <%= if episode['air_date'] != nil then episode['air_date'].to_date.strftime("%B %d, %Y") else "unknown date" end %></p>
 			<hr>
-			<div class="episode-rating"><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i></div>
+			<div class="rating" id="rating" data-score="<%=ratings%>">
+      </div>
 		</div>
 	</div>
 	<p><%=episode['overview']%></p>
@@ -29,4 +30,27 @@
 </div>
 </div>
 
-</div>
+<%= javascript_include_tag "jquery.raty.min" %>
+<script>
+  $('#rating').raty({
+    path: '/assets',
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    halfShow : false,
+    width: false,
+    <% if current_user.nil?%>
+    readOnly: true,
+    <% end %>
+    click: function(score, evt) {
+      console.log("SCORE "+score);
+      $.ajax({
+        url: "<%=series_episode_rating_path(series.id, params[:season], params[:episode])%>",
+        type: 'POST',
+        data: {"score": score},
+        success:    function(response, status) {
+          console.log(status);
+        }
+      });}
+  });
+</script>

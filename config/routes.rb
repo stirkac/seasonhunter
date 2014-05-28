@@ -13,7 +13,10 @@ Seasonhunter::Application.routes.draw do
     post :update_rating
 
     get "/:season/:episode", controller: :episodes, action: :show, as: :episode
+
     post "/:season/:episode/comment", controller: :episodes, action: :create_comment, as: :episode_comment
+    post "/:season/:episode/rating", controller: :episodes, action: :update_rating, as: :episode_rating
+
   end
 
   resources :users, only: [:index, :show]

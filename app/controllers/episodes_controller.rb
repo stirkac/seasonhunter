@@ -13,7 +13,7 @@ class EpisodesController < ApplicationController
 	end
 
 	expose(:ratings) do
-		Raing.for_show(params[:series_id]).season(params[:season]).episode(params[:episode])
+		Rating.for_show(params[:series_id]).season(params[:season]).episode(params[:episode]).average(:score)
 	end
 
 	def show
@@ -33,5 +33,19 @@ class EpisodesController < ApplicationController
 
 		redirect_to series_episode_path(params[:series_id],params[:season],params[:episode])
 	end
+
+	def update_rating
+		rating = Rating.find_or_initialize_by(
+			show_id: params[:series_id],
+			user_id: current_user.id,
+			season: params[:season],
+			episode: params[:episode],
+			)
+		rating.score = params[:score]
+		rating.save!
+    respond_to do |format|
+        format.json { head :ok }
+    end
+  end
 
 end
