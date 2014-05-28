@@ -26,6 +26,11 @@
 		</div>
 	</div>
 	<p><%=episode['overview']%></p>
+  <%unless current_user.nil?%>
+    <%=link_to series_episode_calendar_path params[:series_id], params[:season], params[:episode] do%>
+      <span class="glyphicon glyphicon-plus"></span> Add episode to calendar
+    <%end%>
+  <%end%>
 	<%= render "shared/comments", comments: comments, create_url: series_episode_comment_path %>
 </div>
 </div>

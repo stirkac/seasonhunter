@@ -37,6 +37,11 @@
 <div class="col-md-6">
 <% seasons.each do |season| %>
 	<h3>Season <%=season['season_number']%> <small>on air <%=time_ago_in_words(season['air_date']) rescue "unknown time"%></small></h3>
+  <%unless current_user.nil?%>
+    <%=link_to series_season_calendar_path series.id, season["season_number"] do%>
+      <span class="glyphicon glyphicon-plus"></span> Add season to calendar
+    <%end%>
+  <%end%>
   <p>
   <% if season['episodes'].present? %>
   	<ul>
