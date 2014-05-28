@@ -24,6 +24,18 @@ class SeriesController < ApplicationController
 		end
 	end
 
+	def add_season_to_calendar
+		season = Tmdb::Season.detail series_id, params[:season].to_i
+		client = current_user.google_api
+		season["episodes"].each do |e|
+			if e["episode_number"].is_a? Fixnum
+				ep = Episode.new series_id, params[:season].to_i, e["episode_number"]
+				Google::Calendar.insert_event client, ep
+			end
+		end
+		redirect_to series_path(series.id)
+	end
+
 	def favorite
 		Favorite.find_or_create_by(user_id: current_user.id, show_id: series.id)
 		redirect_to series_path(series.id)

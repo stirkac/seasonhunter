@@ -22,6 +22,14 @@ class EpisodesController < ApplicationController
 		end
 	end
 
+	def add_to_calendar
+		ep = Episode.new params[:series_id], params[:season], params[:episode]
+		client = current_user.google_api
+
+		Google::Calendar.insert_event client, ep
+		redirect_to series_episode_path(params[:series_id],params[:season],params[:episode])
+	end
+
 	def create_comment
 		comment = Comment.create!(
 			message: params[:comment][:message],

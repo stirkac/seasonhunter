@@ -11,9 +11,11 @@ Seasonhunter::Application.routes.draw do
   	get :unfavorite
     post :create_comment
     post :update_rating
+    get ":season/calendar", action: :add_season_to_calendar, as: :season_calendar
 
     get "/:season/:episode", controller: :episodes, action: :show, as: :episode
 
+    get "/:season/:episode/calendar", controller: :episodes, action: :add_to_calendar, as: :episode_calendar
     post "/:season/:episode/comment", controller: :episodes, action: :create_comment, as: :episode_comment
     post "/:season/:episode/rating", controller: :episodes, action: :update_rating, as: :episode_rating
 
