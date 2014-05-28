@@ -23,3 +23,6 @@ gem 'omniauth'
 gem "omniauth-google-oauth2"
 gem 'themoviedb'
 gem 'activeadmin', github: 'gregbell/active_admin'
+
+# Google calendar
+gem 'google-api-client', :require => 'google/api_client'
